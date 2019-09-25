@@ -40,6 +40,6 @@ class GetAllCatalogProductsWithFilterQuery
     {
         return CatalogProduct::whereCatalogId($this->catalog->id)
             ->byFilter($this->catalogProductFilter)
-            ->paginate();
+            ->paginate(3);
     }
 }

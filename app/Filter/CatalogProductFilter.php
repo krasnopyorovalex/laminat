@@ -19,12 +19,7 @@ final class CatalogProductFilter extends Filter
      *
      * @var array
      */
-    protected $filters = ['sort', 'filters', 'priceFrom', 'priceTo'];
-
-    /**
-     * Allowed values by ORDER BY
-     */
-    private const ORDER_TYPES = ['asc', 'desc'];
+    protected $filters = ['filters', 'priceFrom', 'priceTo', 'price', 'name'];
 
     /**
      * @param array $filters
@@ -56,23 +51,6 @@ final class CatalogProductFilter extends Filter
     }
 
     /**
-     * Filter the query by a given price.
-     *
-     * @param string $value
-     * @return Builder
-     */
-    protected function sort(string $value): Builder
-    {
-        [$field, $orderType] = explode('_', $value);
-
-        if (!in_array($orderType, self::ORDER_TYPES, true)) {
-            return $this->builder;
-        }
-
-        return $this->builder->orderBy($field, $orderType);
-    }
-
-    /**
      * @param string $price
      * @return Builder
      */
@@ -88,5 +66,27 @@ final class CatalogProductFilter extends Filter
     protected function priceTo(string $price): Builder
     {
         return $this->builder->where('price', '<=', (int)$price);
+    }
+
+    /**
+     * Filter the query by a given price.
+     *
+     * @param string $value
+     * @return Builder
+     */
+    protected function price(string $value): Builder
+    {
+        return $this->builder->orderBy('price', $value);
+    }
+
+    /**
+     * Filter the query by a given name.
+     *
+     * @param string $value
+     * @return Builder
+     */
+    protected function name(string $value): Builder
+    {
+        return $this->builder->orderBy('name', $value);
     }
 }

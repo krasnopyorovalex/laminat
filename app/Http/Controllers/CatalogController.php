@@ -57,8 +57,6 @@ class CatalogController extends PageController
             $products = $this->dispatch(new GetAllCatalogProductsWithFilterQuery($catalog, $this->catalogProductFilter));
 
         } catch (Exception $exception) {
-            print_r($exception->getMessage());
-            exit;
             return parent::show($alias);
         }
 

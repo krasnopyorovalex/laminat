@@ -36,29 +36,7 @@
                     @include('layouts.sections.filter_panel')
                 </div>
                 <div class="col-9">
-                    <div class="sorting">
-                        <div class="label">Сортировать:</div>
-                        <form action="#">
-                            <div class="single__block">
-                                <select name="alphabet">
-                                    <option value="" disabled selected>По алфавиту:</option>
-                                    <option value="asc">От А до Я</option>
-                                    <option value="desc">От Я до А</option>
-                                </select>
-                                <i class="select__arrow"></i>
-                            </div>
-
-                            <div class="single__block">
-                                <select name="price">
-                                    <option value="" disabled selected>По цене:</option>
-                                    <option value="asc">По возрастанию</option>
-                                    <option value="desc">По убыванию</option>
-                                </select>
-                                <i class="select__arrow"></i>
-                            </div>
-                        </form>
-                    </div>
-
+                    @include('layouts.sections.sorting')
                     <div class="catalog__items">
                         @foreach($products as $product)
                         <div class="catalog__items-item">
@@ -94,7 +72,9 @@
                         {{ $products->appends([
                             'filters' => request('filters'),
                             'priceFrom' => request('priceFrom'),
-                            'priceTo' => request('priceTo')
+                            'priceTo' => request('priceTo'),
+                            'name' => request('name'),
+                            'price' => request('price')
                         ])
                         ->onEachSide(3)
                         ->links() }}

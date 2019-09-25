@@ -129,3 +129,10 @@ if ( ! function_exists('is_checked')) {
         return $result ? 'checked' : '';
     }
 }
+
+if ( ! function_exists('is_selected')) {
+    function is_selected(string $name, string $value): string
+    {
+        return request()->get($name) === $value ? 'selected' : '';
+    }
+}

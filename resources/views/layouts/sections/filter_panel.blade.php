@@ -1,5 +1,7 @@
 <div class="filter__panel">
-    <form action="{{ request()->url() }}" class="filter__panel-form" method="get">
+    <form action="{{ request()->fullUrl() }}" class="filter__panel-form" method="get">
+        <input type="hidden" name="name" value="{{ request('name') ?: '' }}">
+        <input type="hidden" name="price" value="{{ request('price') ?: '' }}">
         <div class="filter__block-price">
             <div class="label">Цена, ₽:</div>
             <div id="keypress"></div>
@@ -32,4 +34,5 @@
             @endforeach
         @endif
     </form>
+    <div class="run_filter-btn">Показать</div>
 </div>
