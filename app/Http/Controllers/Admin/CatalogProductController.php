@@ -8,6 +8,7 @@ use App\Domain\CatalogProduct\Commands\DeleteCatalogProductCommand;
 use App\Domain\CatalogProduct\Commands\UpdateCatalogProductCommand;
 use App\Domain\CatalogProduct\Queries\GetAllCatalogProductsQuery;
 use App\Domain\CatalogProduct\Queries\GetCatalogProductByIdQuery;
+use App\Domain\Filter\Queries\GetAllFiltersQuery;
 use App\Http\Controllers\Controller;
 use Domain\CatalogProduct\Requests\CreateCatalogProductRequest;
 use Domain\CatalogProduct\Requests\UpdateCatalogProductRequest;
@@ -44,10 +45,12 @@ class CatalogProductController extends Controller
     public function create($catalog)
     {
         $catalogProduct = new CatalogProduct();
+        $filters = $this->dispatch(new GetAllFiltersQuery());
 
         return view('admin.catalog_products.create', [
             'catalog' => $catalog,
-            'labels' => $catalogProduct->getLabels()
+            'labels' => $catalogProduct->getLabels(),
+            'filters' => $filters
         ]);
     }
 
@@ -71,9 +74,11 @@ class CatalogProductController extends Controller
     public function edit($id)
     {
         $catalogProduct = $this->dispatch(new GetCatalogProductByIdQuery($id));
+        $filters = $this->dispatch(new GetAllFiltersQuery());
 
         return view('admin.catalog_products.edit', [
-            'catalogProduct' => $catalogProduct
+            'catalogProduct' => $catalogProduct,
+            'filters' => $filters
         ]);
     }
 

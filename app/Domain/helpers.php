@@ -11,7 +11,7 @@ if (! function_exists('str_template')) {
      */
     function str_template(string $string, array $params = [])
     {
-        $search = array_map(function ($v) {
+        $search = array_map(static function ($v) {
             return '{' . $v . '}';
         }, array_keys($params));
         return str_replace($search, array_values($params), $string);
@@ -65,7 +65,7 @@ if (! function_exists('build_options')) {
         foreach ($array as $item) {
             if (!is_array($item)) {
 
-                $html .= '<option value="' . $item->id . '"' . ($selected == $item->id ? 'selected=""' : '') . '>' . $step . $item->name . '</option>' . PHP_EOL;
+                $html .= '<option value="' . $item->id . '"' . ($selected === $item->id ? 'selected=""' : '') . '>' . $step . $item->name . '</option>' . PHP_EOL;
 
                 if (isset($originArray['child_' . $item->id])) {
                     $html = build_options($originArray['child_' . $item->id], $selected, $html, $step . '**', $array);
@@ -84,7 +84,7 @@ if (! function_exists('get_ids_from_array')) {
      */
     function get_ids_from_array(array $array)
     {
-        return array_map(function ($item) {
+        return array_map(static function ($item) {
             return $item['id'];
         }, $array);
     }
@@ -97,7 +97,7 @@ if (! function_exists('is_main_page')) {
      */
     function is_main_page()
     {
-        return in_array(request()->path(), ['/']);
+        return request()->path() === '/';
     }
 }
 
@@ -110,11 +110,22 @@ if (! function_exists('add_css_class')) {
     {
         $classes = [];
         if (count($item->menuItems)) {
-            array_push($classes, 'has__child');
+            $classes[] = 'has__child';
         }
-        if (trim($item->link,'/') == request()->path() || request()->path() == $item->link) {
-            array_push($classes, 'active');
+        if (trim($item->link,'/') === request()->path() || request()->path() === $item->link) {
+            $classes[] = 'active';
         }
         return count($classes) ? ' class="'. implode(' ', $classes) .'"' : '';
+    }
+}
+
+if ( ! function_exists('is_checked')) {
+    function is_checked(int $filterId, int $filterOptionId): string
+    {
+        $checkedArray = request()->get('filters');
+
+        $result = isset($checkedArray[$filterId]) && in_array((string)$filterOptionId, $checkedArray[$filterId], true);
+
+        return $result ? 'checked' : '';
     }
 }

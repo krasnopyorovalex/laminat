@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Slider newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Slider newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Slider query()
+ * @property-read int|null $images_count
  */
 class Slider extends Model
 {

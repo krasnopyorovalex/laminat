@@ -22,7 +22,7 @@ class PageController extends Controller
     /**
      * @var CanonicalService
      */
-    private $canonicalService;
+    protected $canonicalService;
 
     /**
      * PageController constructor.

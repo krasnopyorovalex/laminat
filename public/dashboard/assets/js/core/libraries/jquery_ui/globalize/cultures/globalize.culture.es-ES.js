@@ -27,7 +27,7 @@ if ( typeof require !== "undefined" &&
 
 Globalize.addCultureInfo( "es-ES", "default", {
 	name: "es-ES",
-	englishName: "Spanish (Spain, International Sort)",
+	englishName: "Spanish (Spain, International Filter)",
 	nativeName: "Español (España, alfabetización internacional)",
 	language: "es",
 	numberFormat: {

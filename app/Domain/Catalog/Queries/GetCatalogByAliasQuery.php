@@ -31,8 +31,6 @@ class GetCatalogByAliasQuery
     {
         return Catalog::with(['image','catalogs' => static function ($query) {
             return $query->with(['image']);
-        }, 'products' => static function ($query) {
-            return $query->with(['image']);
         }])
             ->where('alias', $this->alias)
             ->firstOrFail();

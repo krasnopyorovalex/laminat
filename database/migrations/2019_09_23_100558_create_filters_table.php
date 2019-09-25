@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnShortTextToServicesTable extends Migration
+class CreateFiltersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddColumnShortTextToServicesTable extends Migration
      */
     public function up()
     {
-        Schema::table('services', function (Blueprint $table) {
-            $table->text('short_text')->nullable()->after('text');
+        Schema::create('filters', static function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->unsignedTinyInteger('pos');
         });
     }
 
@@ -25,8 +27,6 @@ class AddColumnShortTextToServicesTable extends Migration
      */
     public function down()
     {
-        Schema::table('services', function (Blueprint $table) {
-            $table->dropColumn(['short_text']);
-        });
+        Schema::dropIfExists('filters');
     }
 }

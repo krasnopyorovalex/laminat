@@ -5,6 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Builder;
+use App\Filter\CatalogProductFilter;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Carbon;
+use App\CatalogProductFilter as CatalogProductFilterModel;
 
 /**
  * App\CatalogProduct
@@ -20,23 +25,22 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  * @property integer $price
  * @property string $is_published
  * @property int $pos
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Catalog $catalog
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\CatalogProduct[] $relativeProducts
- * @method static \Illuminate\Database\Eloquent\Builder|\App\CatalogProduct whereAlias($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\CatalogProduct whereCatalogId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\CatalogProduct whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\CatalogProduct whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\CatalogProduct whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\CatalogProduct whereIsPublished($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\CatalogProduct whereKeywords($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\CatalogProduct whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\CatalogProduct wherePos($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\CatalogProduct whereText($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\CatalogProduct whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\CatalogProduct whereUpdatedAt($value)
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Catalog $catalog
  * @mixin \Eloquent
+ * @mixin CatalogProductFilter
+ * @property string|null $label
+ * @property-read Collection|Filter[] $filter
+ * @property-read int|null $filter_count
+ * @property-read Collection|FilterOption[] $filterOptions
+ * @property-read int|null $filter_options_count
+ * @property-read string $url
+ * @property-read Image $image
+ * @method static Builder|CatalogProduct newModelQuery()
+ * @method static Builder|CatalogProduct newQuery()
+ * @method static Builder|CatalogProduct query()
+ * @method static Builder|CatalogProduct sort(CatalogProductFilter $filter)
  */
 class CatalogProduct extends Model
 {
@@ -44,8 +48,8 @@ class CatalogProduct extends Model
 
     private const LABELS = [
         '' => 'Не выбрано',
-        'sale' => 'Акция',
-        'new' => 'Новинка'
+        'info' => 'Акция!',
+        'new' => 'Новинка!'
     ];
 
     protected $with = ['catalog', 'image'];
@@ -61,6 +65,16 @@ class CatalogProduct extends Model
     public function catalog(): HasOne
     {
         return $this->hasOne(Catalog::class, 'id', 'catalog_id');
+    }
+
+    public function filters()
+    {
+        return $this->belongsToMany(Filter::class, 'catalog_product_filter')->using(CatalogProductFilterModel::class);
+    }
+
+    public function filterOptions()
+    {
+        return $this->belongsToMany(FilterOption::class, 'catalog_product_filter')->using(CatalogProductFilterModel::class);
     }
 
     /**
@@ -111,5 +125,28 @@ class CatalogProduct extends Model
     public function isSelectedLabel(string $key): bool
     {
         return $key === $this->label;
+    }
+
+    /**
+     * @param FilterOption $filterOption
+     * @return bool
+     */
+    public function isCheckedFilterOption(FilterOption $filterOption): bool
+    {
+        $filterOptions = $this->filterOptions->pluck('id')->toArray();
+
+        return in_array($filterOption->id, $filterOptions, true);
+    }
+
+    /**
+     * Apply all relevant products by filters.
+     *
+     * @param Builder $query
+     * @param CatalogProductFilter $filter
+     * @return Builder
+     */
+    public function scopeByFilter($query, CatalogProductFilter $filter): Builder
+    {
+        return $filter->apply($query);
     }
 }

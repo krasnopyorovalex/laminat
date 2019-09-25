@@ -21,6 +21,7 @@
                 <div class="tabbable">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#main" data-toggle="tab">Основное</a></li>
+                        <li><a href="#filters" data-toggle="tab">Фильтры</a></li>
                         <li><a href="#image" data-toggle="tab">Изображение</a></li>
                     </ul>
 
@@ -47,6 +48,28 @@
                                 @textarea(['name' => 'text', 'label' => 'Текст', 'entity' => $catalogProduct])
 
                                 @submit_btn()
+                        </div>
+                        <div class="tab-pane" id="filters">
+                            @if(count($filters))
+                            <div class="row">
+                                @foreach($filters as $filter)
+                                   <div class="col-md-3">
+                                       @if(count($filter->filterOptions))
+                                           <div class="form-group">
+                                               <label for="filter-{{ $filter->id  }}">{{ $filter->name }}:</label>
+                                               <select class="form-control border-blue border-xs select-search" id="filter-{{ $filter->id  }}" name="filters[{{ $filter->id }}]" data-width="100%">
+                                                   <option value="">Не выбрано</option>
+                                                   @foreach($filter->filterOptions as $filterOption)
+                                                       <option value="{{ $filterOption->id }}" @if($catalogProduct->isCheckedFilterOption($filterOption))selected @endif>{{ $filterOption->name }}</option>
+                                                   @endforeach
+                                               </select>
+                                           </div>
+                                       @endif
+                                   </div>
+                                @endforeach
+                            </div>
+                            @endif
+                            @submit_btn()
                         </div>
                         <div class="tab-pane" id="image">
                             @if ($catalogProduct->image)

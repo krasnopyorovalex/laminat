@@ -1311,7 +1311,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 			return 0;
 		}
 
-		// Sort on method existence if only one input has compareDocumentPosition
+		// Filter on method existence if only one input has compareDocumentPosition
 		var compare = !a.compareDocumentPosition - !b.compareDocumentPosition;
 		if ( compare ) {
 			return compare;
@@ -2613,7 +2613,7 @@ select = Sizzle.select = function( selector, context, results, seed ) {
 
 // One-time assignments
 
-// Sort stability
+// Filter stability
 support.sortStable = expando.split("").sort( sortOrder ).join("") === expando;
 
 // Support: Chrome 14-35+

@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * App\MenuItem
@@ -25,6 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\MenuItem whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\MenuItem whereParentId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\MenuItem wherePos($value)
+ * @property-read int|null $menu_items_count
  */
 class MenuItem extends Model
 {
@@ -36,18 +39,18 @@ class MenuItem extends Model
     protected $fillable = ['name', 'link', 'menu_id', 'parent_id', 'pos'];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return HasOne
      */
-    public function menu()
+    public function menu(): HasOne
     {
-        return $this->hasOne('App\Menu');
+        return $this->hasOne(Menu::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
-    public function menuItems()
+    public function menuItems(): HasMany
     {
-        return $this->hasMany('App\MenuItem', 'parent_id', 'id')->orderBy('pos');
+        return $this->hasMany(__CLASS__, 'parent_id', 'id')->orderBy('pos');
     }
 }

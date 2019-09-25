@@ -38,6 +38,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Catalog whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Catalog whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read int|null $catalogs_count
+ * @property-read string $url
+ * @property-read \App\Catalog|null $parent
+ * @property-read int|null $products_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Catalog newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Catalog newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Catalog query()
  */
 class Catalog extends Model
 {
@@ -93,7 +100,7 @@ class Catalog extends Model
      */
     public function getTemplate(): string
     {
-        return count($this->products)
+        return $this->products()->count()
             ? 'catalog.products'
             : 'catalog.sub_categories';
     }

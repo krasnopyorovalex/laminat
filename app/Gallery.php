@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Gallery whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Gallery wherePos($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Gallery whereUpdatedAt($value)
+ * @property-read int|null $images_count
  */
 class Gallery extends Model
 {

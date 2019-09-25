@@ -36,7 +36,7 @@
             edit: "Rediger HTML"
         },
         colours: {
-            black: "Sort",
+            black: "Filter",
             silver: "Sølv",
             gray: "Grå",
             maroon: "Mørkerød",

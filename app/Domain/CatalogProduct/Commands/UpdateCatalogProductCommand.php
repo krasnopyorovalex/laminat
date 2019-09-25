@@ -3,6 +3,7 @@
 namespace App\Domain\CatalogProduct\Commands;
 
 use App\CatalogProduct;
+use App\CatalogProductFilter;
 use App\Domain\CatalogProduct\Queries\GetCatalogProductByIdQuery;
 use App\Domain\Image\Commands\DeleteImageCommand;
 use App\Domain\Image\Commands\UploadImageCommand;
@@ -52,6 +53,26 @@ class UpdateCatalogProductCommand
             $this->dispatch(new UploadImageCommand($this->request, $catalogProduct->id, CatalogProduct::class));
         }
 
+        $this->syncCatalogProductFilters();
+
         return $catalogProduct->update($this->request->all());
+    }
+
+    private function syncCatalogProductFilters(): void
+    {
+        if ($this->request->post('filters')) {
+
+            CatalogProductFilter::where('catalog_product_id', $this->id)->delete();
+
+            foreach ($this->request->post('filters') as $filter => $filterOption) {
+                if ($filterOption) {
+                    CatalogProductFilter::create([
+                        'catalog_product_id' => $this->id,
+                        'filter_id' => (int)$filter,
+                        'filter_option_id' => (int)$filterOption
+                    ]);
+                }
+            }
+        }
     }
 }

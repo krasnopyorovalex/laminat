@@ -2,13 +2,13 @@
  * Data can often be a complicated mix of numbers and letters (file names
  * are a common example) and sorting them in a natural manner is quite a
  * difficult problem.
- * 
+ *
  * Fortunately a deal of work has already been done in this area by other
  * authors - the following plug-in uses the [naturalSort() function by Jim
  * Palmer](http://www.overset.com/2008/09/01/javascript-natural-sort-algorithm-with-unicode-support) to provide natural sorting in DataTables.
  *
  *  @name Natural sorting
- *  @summary Sort data with a mix of numbers and letters _naturally_.
+ *  @summary Filter data with a mix of numbers and letters _naturally_.
  *  @author [Jim Palmer](http://www.overset.com/2008/09/01/javascript-natural-sort-algorithm-with-unicode-support)
  *
  *  @example
@@ -22,7 +22,7 @@
 (function() {
 
 /*
- * Natural Sort algorithm for Javascript - Version 0.7 - Released under MIT license
+ * Natural Filter algorithm for Javascript - Version 0.7 - Released under MIT license
  * Author: Jim Palmer (based on chunking idea from Dave Koelle)
  * Contributors: Mike Grier (mgrier.com), Clint Priest, Kyle Adams, guillermo
  * See: http://js-naturalsort.googlecode.com/svn/trunk/naturalSort.js

@@ -115,7 +115,7 @@ $(function() {
         selectMode: 1,
         source: {
             url: "assets/demo_data/fancytree/fancytree.json"
-        }    
+        }
     });
 
 
@@ -153,7 +153,7 @@ $(function() {
         selectMode: 2,
         source: {
             url: "assets/demo_data/fancytree/fancytree.json"
-        }    
+        }
     });
 
     // Initialize switchery toggle
@@ -217,13 +217,13 @@ $(function() {
     // Initialize
     $(".tree-sorting").fancytree();
 
-    // Sort tree
+    // Filter tree
     $('.sort-tree').on('click', function() {
         var node = $(".tree-sorting").fancytree("getRootNode");
         node.sortChildren(null, true);
     });
 
-    // Sort active nodes
+    // Filter active nodes
     $('.sort-branch').on('click', function() {
         var node = $(".tree-sorting").fancytree("getActiveNode");
 
@@ -316,5 +316,5 @@ $(function() {
             alert("dislike " + $input.val());
         }
     });
-    
+
 });

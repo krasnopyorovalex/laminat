@@ -22,6 +22,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Guestbook wherePublishedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Guestbook whereText($value)
  * @mixin \Eloquent
+ * @property string $is_published
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Guestbook whereIsPublished($value)
  */
 class Guestbook extends Model
 {

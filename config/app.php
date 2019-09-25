@@ -169,6 +169,7 @@ return [
         App\Providers\ArticlesServiceProvider::class,
         App\Providers\TextParserServiceProvider::class,
         App\Providers\CatalogServiceProvider::class,
+        App\Providers\FilterServiceProvider::class,
 
     ],
 

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * App\Menu
@@ -18,6 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Menu newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Menu newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Menu query()
+ * @property-read int|null $menu_items_count
  */
 class Menu extends Model
 {
@@ -29,10 +31,10 @@ class Menu extends Model
     protected $fillable = ['name', 'sys_name'];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
-    public function menuItems()
+    public function menuItems(): HasMany
     {
-        return $this->hasMany('App\MenuItem');
+        return $this->hasMany(MenuItem::class);
     }
 }

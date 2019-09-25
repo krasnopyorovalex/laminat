@@ -78,6 +78,7 @@
                             <li><a href="{{ route('admin.pages.index') }}"><i class="icon-compose"></i> <span>Страницы</span></a></li>
                             <li><a href="{{ route('admin.catalogs.index') }}"><i class="icon-folder-open"></i> <span>Каталог</span></a></li>
                             <li><a href="{{ route('admin.articles.index') }}"><i class="icon-magazine"></i> <span>Статьи</span></a></li>
+                            <li><a href="{{ route('admin.filters.index') }}"><i class="icon-filter3"></i> <span>Фильтры</span></a></li>
 {{--                            <li><a href="{{ route('admin.guestbooks.index') }}"><i class="icon-bubble2"></i> <span>Отзывы</span></a></li>--}}
                             <li><a href="{{ route('admin.sliders.index') }}"><i class="icon-images2"></i> <span>Слайдер</span></a></li>
                             <li><a href="{{ route('admin.galleries.index') }}"><i class="icon-stack-picture"></i> <span>Галерея</span></a></li>

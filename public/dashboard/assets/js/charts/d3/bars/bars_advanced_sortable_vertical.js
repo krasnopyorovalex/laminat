@@ -153,7 +153,7 @@ $(function () {
             // Attach change event
             d3.select(".toggle-sort").on("change", change);
 
-            // Sort values on page load with delay
+            // Filter values on page load with delay
             var sortTimeout = setTimeout(function() {
                 d3.select(".toggle-sort").property("checked", true).each(change);
                 $.uniform.update();
@@ -196,9 +196,9 @@ $(function () {
         $('.sidebar-control').on('click', resize);
 
         // Resize function
-        // 
+        //
         // Since D3 doesn't support SVG resize by default,
-        // we need to manually specify parts of the graph that need to 
+        // we need to manually specify parts of the graph that need to
         // be updated on window resize
         function resize() {
 
