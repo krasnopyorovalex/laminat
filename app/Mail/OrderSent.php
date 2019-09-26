@@ -30,8 +30,7 @@ class OrderSent extends Mailable
      */
     public function build()
     {
-        return $this->from('bravyi-turist@yandex.ru')
-            ->subject('Форма: заказ тура')
+        return $this->subject('Форма: заказ тура')
             ->view('emails.order', [
                 'data' => $this->data
             ]);
