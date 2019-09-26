@@ -19,15 +19,13 @@ class FormHandlerController extends Controller
 {
     use DispatchesJobs;
 
-    private $to = 'bravyi.turist@mail.ru';
-
     /**
      * @param OrderCheckRequest $request
      * @return array
      */
     public function orderCheck(OrderCheckRequest $request): array
     {
-        Mail::to([$this->to])->send(new OrderSent($request->all()));
+        Mail::to([env('MAIL_ADDRESS')])->send(new OrderSent($request->all()));
 
         return [
             'message' => 'Благодарим за Вашу заявку. Наш менеджер свяжется с Вами в ближайшее время',
@@ -55,7 +53,7 @@ class FormHandlerController extends Controller
      */
     public function recall(RecallRequest $request): array
     {
-        Mail::to([$this->to])->send(new RecallSent($request->all()));
+        Mail::to([env('MAIL_ADDRESS')])->send(new RecallSent($request->all()));
 
         return [
             'message' => 'Благодарим за Вашу заявку. Наш менеджер свяжется с Вами в ближайшее время',
