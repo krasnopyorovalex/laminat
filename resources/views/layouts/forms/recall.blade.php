@@ -13,11 +13,11 @@
                         </div>
                     </div>
                     <div class="single__block name">
-                        <input type="text" name="name_recall" placeholder="Имя*" autocomplete="off" required>
+                        <input type="text" name="name__recall" placeholder="Имя*" autocomplete="off" required>
                         <i class="icon human"></i>
                     </div>
                     <div class="single__block phone">
-                        <input type="text" name="phone_recall" class="phone_field" autocomplete="off" required>
+                        <input type="text" name="phone__recall" class="phone_field" autocomplete="off" required>
                         <i class="icon phone"></i>
                     </div>
                     <div class="single__block i__agree">

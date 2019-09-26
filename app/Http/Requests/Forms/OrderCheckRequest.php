@@ -13,8 +13,8 @@ class OrderCheckRequest extends Request
     public function rules(): array
     {
         return [
-            'name_recall' => 'required|string|min:3',
-            'phone_recall' => 'required|string|min:5'
+            'name' => 'required|string|min:3',
+            'phone' => 'required|string|min:5'
         ];
     }
 }

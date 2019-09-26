@@ -1,2 +1,2 @@
-<p>Имя: {{ $data['name_recall'] }}</p>
-<p>Телефон: {{ $data['phone_recall'] }}</p>
+<p>Имя: {{ $data['name'] }}</p>
+<p>Телефон: {{ $data['phone'] }}</p>
