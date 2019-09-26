@@ -28,7 +28,7 @@ class RecallSent extends Mailable
     /**
      * @return RecallSent
      */
-    public function build()
+    public function build(): RecallSent
     {
         return $this->subject('Форма: заказ обратного звонка')
             ->view('emails.recall', [

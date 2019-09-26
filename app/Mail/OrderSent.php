@@ -28,9 +28,9 @@ class OrderSent extends Mailable
     /**
      * @return OrderSent
      */
-    public function build()
+    public function build(): OrderSent
     {
-        return $this->subject('Форма: заказ тура')
+        return $this->subject('Форма: узнать стоимость товара')
             ->view('emails.order', [
                 'data' => $this->data
             ]);
