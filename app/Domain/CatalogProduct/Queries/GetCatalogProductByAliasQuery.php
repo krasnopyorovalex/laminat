@@ -29,6 +29,8 @@ class GetCatalogProductByAliasQuery
      */
     public function handle()
     {
-        return CatalogProduct::where('alias', $this->alias)->firstOrFail();
+        return CatalogProduct::with(['filterOptions' => static function ($query) {
+            return $query->with(['filter']);
+        }])->where('alias', $this->alias)->firstOrFail();
     }
 }

@@ -10,6 +10,7 @@ use App\Filter\CatalogProductFilter;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
 use App\CatalogProductFilter as CatalogProductFilterModel;
+use Illuminate\Support\HtmlString;
 
 /**
  * App\CatalogProduct
@@ -94,11 +95,11 @@ class CatalogProduct extends Model
     }
 
     /**
-     * @return string
+     * @return HtmlString
      */
-    public function getPrice(): string
+    public function getPrice(): HtmlString
     {
-        return sprintf('%s &#8381;', number_format($this->price, 0, '.', ' '));
+        return new HtmlString(sprintf('%s &#8381;', number_format($this->price, 0, '.', ' ')));
     }
 
     /**

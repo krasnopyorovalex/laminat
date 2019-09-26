@@ -45,7 +45,7 @@
                                     </span>
                                     +7(978) 706-50-92 Ярослава
                                 </a>
-                            </div>,
+                            </div>
                             <div class="phone">
                                 <a href="#">
                                     <span class="box_rounded">
@@ -145,7 +145,7 @@
                             </div>
                             <div class="develop__logo">
                                 <a href="https://krasber.ru" target="_blank" rel="nofollow">
-                                    <img src="./img/krasber.svg" alt="Веб-студия Красбер">
+                                    <img src="{{ asset('img/krasber.svg') }}" alt="Веб-студия Красбер">
                                 </a>
                             </div>
                         </div>

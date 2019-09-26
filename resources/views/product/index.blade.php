@@ -50,7 +50,40 @@
                             <meta itemprop="position" content="{{ isset($product->catalog->parent) ? 4 : 3 }}">
                         </li>
                     </ul>
-                    <div class="seo__text">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    @if($product->image)
+                        <img src="{{ $product->image->path }}" alt="{{ $product->image->alt }}" title="{{ $product->image->title }}">
+                    @endif
+                </div>
+                <div class="col-6">
+                    <div class="product__text">
+                        <div class="row">
+                            <div class="col-4 as_center">
+                                <div class="product_price"><span>Цена</span>: {{ $product->getPrice() }}</div>
+                            </div>
+                            <div class="col-8">
+                                @if($product->filterOptions)
+                                    <table class="product_filters">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">Характеристики товара</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($product->filterOptions as $filterOption)
+                                            <tr>
+                                                <td>{{ $filterOption->filter->name }}:</td>
+                                                <td>{{ $filterOption->name }}</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                @endif
+                            </div>
+                        </div>
                         {!! $product->text !!}
                     </div>
                 </div>
