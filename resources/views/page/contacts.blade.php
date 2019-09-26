@@ -36,5 +36,5 @@
             </div>
         </div>
     </main>
-    @include('layouts.partials.begin_travel')
+    <iframe frameborder="0" height="650" src="https://yandex.ru/map-widget/v1/?um=constructor%3A12411d9035b4f83093cb17a321a2359ea473e2d59cb36b1c72b205a623335ba8&amp;source=constructor" width="100%"></iframe>
 @endsection
