@@ -59,7 +59,7 @@
                     <div class="col-2">
                         <div class="search__socials-icons">
                             <div class="btn call__popup" data-target="popup__recall">
-                                Перезвонить нам
+                                Перезвонить Вам?
                                 {{ svg('call') }}
                             </div>
                         </div>

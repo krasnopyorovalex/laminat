@@ -14,7 +14,10 @@
                     <div class="not__found-box">
                         <img src="{{ asset('img/error-404.svg') }}" alt="страница не найдена">
                     </div>
-                    <a href="{{ route('page.show') }}" class="btn">Перейти на главную</a>
+                    <a href="{{ route('page.show') }}" class="btn">
+                        Перейти на главную
+                        {{ svg('arrow') }}
+                    </a>
                 </div>
             </div>
         </div>
