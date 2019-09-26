@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                @include('layouts.forms.order', ['title' => 'Форма заказа услуги', 'id' => 'check__order-popup'])
+                @include('layouts.forms.order', ['title' => 'Узнать стоимость'])
             </div>
         </div>
     </div>

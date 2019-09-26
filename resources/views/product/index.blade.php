@@ -94,5 +94,5 @@
             </div>
         </div>
     </main>
-    @include('layouts.forms.order')
+    @include('layouts.forms.order_popup')
 @endsection
