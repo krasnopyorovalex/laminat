@@ -94,7 +94,5 @@
             </div>
         </div>
     </main>
-
+    @include('layouts.forms.order')
 @endsection
-
-@include('layouts.forms.order')
