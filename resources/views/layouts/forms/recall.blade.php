@@ -17,7 +17,7 @@
                         <i class="icon human"></i>
                     </div>
                     <div class="single__block phone">
-                        <input type="text" name="phone__recall" class="phone__mask" required>
+                        <input type="text" name="phone__recall" class="phone_field" required>
                         <i class="icon phone"></i>
                     </div>
                     <div class="single__block i__agree">

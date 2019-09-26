@@ -85,6 +85,10 @@
                             </div>
                         </div>
                         {!! $product->text !!}
+                        <div class="btn call__popup" data-target="popup__order">
+                            Узнать стоимость
+                            {{ svg('info') }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -92,3 +96,5 @@
     </main>
 
 @endsection
+
+@include('layouts.forms.order')
