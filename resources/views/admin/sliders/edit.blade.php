@@ -58,9 +58,9 @@
 
     <div id="edit-image" class="modal fade"></div>
     @push('scripts')
-        <script src="{{ asset('dashboard/assets/js/plugins/ui/dragula.min.js') }}" defer></script>
-        <script src="{{ asset('dashboard/assets/js/pages/extension_dnd.js') }}" defer></script>
-        <script src="{{ asset('dashboard/assets/js/plugins/uploaders/fileinput.min.js') }}" defer></script>
-        <script src="{{ asset('dashboard/assets/js/pages/uploader_bootstrap.js') }}" defer></script>
+        <script src="{{ asset('dashboard/assets/js/plugins/ui/dragula.min.js') }}"></script>
+        <script src="{{ asset('dashboard/assets/js/pages/extension_dnd.js') }}"></script>
+        <script src="{{ asset('dashboard/assets/js/plugins/uploaders/fileinput.min.js') }}"></script>
+        <script src="{{ asset('dashboard/assets/js/pages/uploader_bootstrap.js') }}"></script>
     @endpush
 @endsection

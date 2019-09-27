@@ -52,9 +52,9 @@
     @endif
 
 @push('scripts')
-<script src="{{ asset('dashboard/assets/js/plugins/ui/moment/moment.min.js') }}" defer></script>
-<script src="{{ asset('dashboard/assets/js/plugins/pickers/daterangepicker.js') }}" defer></script>
-<script src="{{ asset('dashboard/assets/js/pages/picker_date.js') }}" defer></script>
+<script src="{{ asset('dashboard/assets/js/plugins/ui/moment/moment.min.js') }}"></script>
+<script src="{{ asset('dashboard/assets/js/plugins/pickers/daterangepicker.js') }}"></script>
+<script src="{{ asset('dashboard/assets/js/pages/picker_date.js') }}"></script>
 <script src="{{ asset('dashboard/ckeditor/ckeditor.js') }}"></script>
 @endpush
 @endsection

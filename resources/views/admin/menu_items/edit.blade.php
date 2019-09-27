@@ -48,7 +48,7 @@
         </div>
     </div>
 @push('scripts')
-<script src="{{ asset('dashboard/assets/js/plugins/forms/selects/select2.min.js') }}" defer></script>
-<script src="{{ asset('dashboard/assets/js/pages/form_select2.js') }}" defer></script>
+<script src="{{ asset('dashboard/assets/js/plugins/forms/selects/select2.min.js') }}"></script>
+<script src="{{ asset('dashboard/assets/js/pages/form_select2.js') }}"></script>
 @endpush
 @endsection

@@ -20,13 +20,13 @@ class NewRedirectListener
      */
     public function handle(RedirectDetected $event): void
     {
-        $this->checkIfExistsInMenu($event);
-
-        $redirect = new Redirect;
-        $redirect->url_old = $event->urlOld;
-        $redirect->url_new = $event->urlNew;
-
-        $redirect->save();
+//        $this->checkIfExistsInMenu($event);
+//
+//        $redirect = new Redirect;
+//        $redirect->url_old = $event->urlOld;
+//        $redirect->url_new = $event->urlNew;
+//
+//        $redirect->save();
     }
 
     /**
