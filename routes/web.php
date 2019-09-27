@@ -11,7 +11,7 @@
 |
 */
 
-Route::pattern('alias', '[\da-z-]+');
+Route::pattern('alias', '[\dа-яa-z-]+');
 
 Auth::routes();
 
@@ -22,8 +22,8 @@ Route::get('sitemap.xml', 'SitemapController@xml')->name('sitemap.xml');
 Route::group(['middleware' => ['redirector', 'shortcode']], static function () {
     Route::get('{alias}', 'CatalogController@show')->name('catalog.show');
     Route::get('/{alias?}/{page?}', 'PageController@show')->name('page.show')->where('page', '[0-9]+');
-    Route::get('blog/{alias}', 'BlogController@show')->name('article.show');
-    Route::get('product/{alias}', 'CatalogProductController@show')->name('catalog_product.show');
+    Route::get('блог/{alias}', 'BlogController@show')->name('article.show');
+    Route::get('продукт/{alias}', 'CatalogProductController@show')->name('catalog_product.show');
 });
 
 Route::group(['prefix' => '_root', 'middleware' => 'auth', 'namespace' => 'Admin', 'as' => 'admin.'], static function () {

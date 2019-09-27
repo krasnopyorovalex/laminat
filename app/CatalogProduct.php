@@ -45,8 +45,6 @@ use Illuminate\Support\HtmlString;
  */
 class CatalogProduct extends Model
 {
-    use AutoAliasTrait;
-
     private const LABELS = [
         '' => 'Не выбрано',
         'info' => 'Акция!',
