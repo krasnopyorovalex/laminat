@@ -55,7 +55,9 @@
             <div class="row">
                 <div class="col-6">
                     @if($product->image)
+                    <figure class="product_image">
                         <img src="{{ $product->image->path }}" alt="{{ $product->image->alt }}" title="{{ $product->image->title }}">
+                    </figure>
                     @endif
                 </div>
                 <div class="col-6">

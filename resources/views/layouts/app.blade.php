@@ -105,11 +105,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-2">
-                        <ul>
-                            <li><a href="{{ route('page.show') }}">Главная</a></li>
-                            <li><a href="{{ route('page.show',['alias' => 'otzivi']) }}">Отзывы</a></li>
-                            <li><a href="{{ route('page.show', ['alias' => 'turi']) }}">Наши туры</a></li>
-                        </ul>
+                        @includeWhen($menu->get('menu_footer'), 'layouts.menus.footer', ['menu' => $menu])
                     </div>
                     <div class="col-2">
                         <ul>
@@ -132,11 +128,7 @@
                             <a href="tel:+79787971006" title="Позвонить">+7 (978) 797-10-06</a>
                         </div>
                     </div>
-                    <div class="col-4 right">
-                        <div class="btn call__popup" data-target="popup__recall">
-                            Перезвонить нам
-                            {{ svg('send') }}
-                        </div>
+                    <div class="col-4 right flex">
                         <div class="develop">
                             <div class="develop__link">
                                 <a href="/" target="_blank" rel="nofollow">
@@ -162,9 +154,6 @@
 
     <div class="mobile__menu">
         @includeWhen($menu->get('menu_header'), 'layouts.menus.footer_mobile', ['menu' => $menu])
-        <div class="socials">
-            @include('layouts.partials.socials')
-        </div>
         <div class="close-menu-btn"></div>
         <div class="menu-overlay-mob"></div>
     </div>

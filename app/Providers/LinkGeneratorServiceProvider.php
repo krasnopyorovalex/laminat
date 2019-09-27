@@ -12,9 +12,9 @@ class LinkGeneratorServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
-        $this->app->bind(LinkGeneratorService::class, function () {
+        $this->app->bind(LinkGeneratorService::class, static function () {
             return new LinkGeneratorService();
         });
     }

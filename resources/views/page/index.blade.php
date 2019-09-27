@@ -34,12 +34,6 @@
                         </ul>
                         <p>Для полного комфорта в путешествии, туры организованы небольшими группами с выездом из города Симферополь. Во время пешеходных туров мы показываем красивейшие места и тропы.</p>
                         <p class="center">Насладимся путешествием вместе!</p>
-                        <div class="center">
-                            <a href="{{ route('page.show', ['alias' => 'catalog']) }}" class="btn">
-                                Смотреть все
-                                {{ svg('arrow') }}
-                            </a>
-                        </div>
                     </div>
                 </div>
                 <div class="col-6">
@@ -54,8 +48,6 @@
     @include('layouts.partials.begin_travel')
 
     @includeWhen($page->gallery, 'layouts.sections.gallery', ['gallery' => $page->gallery])
-
-    @include('layouts.partials.counts')
 
     <main class="seo">
         <div class="container">

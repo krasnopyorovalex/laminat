@@ -2,7 +2,13 @@
 
 namespace App\Services;
 
+use Exception;
+use Log;
 use Illuminate\Support\Str;
+use App\Page;
+use App\Article;
+use ReflectionClass;
+use App\Catalog;
 
 /**
  * Class LinkGeneratorService
@@ -13,11 +19,10 @@ class LinkGeneratorService
     /**
      * @var array
      */
-    private $models = [
-        'App\Page' => 'Страницы',
-        'App\Service' => 'Услуги',
-        'App\Article' => 'Статьи',
-        'App\Information' => 'Новости'
+    private const MODELS = [
+        Page::class => 'Страницы',
+        Article::class => 'Статьи',
+        Catalog::class => 'Каталог'
     ];
 
     /**
@@ -30,10 +35,10 @@ class LinkGeneratorService
      */
     public function getCollection(): array
     {
-        foreach ($this->models as $key => $value) {
+        foreach (self::MODELS as $key => $value) {
 
             try {
-                $reflectionClass = (new \ReflectionClass($key))->newInstance();
+                $reflectionClass = (new ReflectionClass($key))->newInstance();
                 $module = Str::lower(class_basename($reflectionClass));
                 $collection = $reflectionClass::get();
 
@@ -41,8 +46,8 @@ class LinkGeneratorService
                     'module' => $module,
                     'collections' => $collection
                 ];
-            } catch (\Exception $exception) {
-                \Log::error($exception->getMessage());
+            } catch (Exception $exception) {
+                Log::error($exception->getMessage());
             }
         }
 
@@ -58,7 +63,7 @@ class LinkGeneratorService
     {
         $route = route($modelName . '.show', ['alias' => $alias], false);
 
-        return str_replace(['index'], '', $route);
+        return str_replace('index', '', $route);
     }
 
 }
