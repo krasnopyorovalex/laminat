@@ -1,4 +1,10 @@
 <div class="filter__panel">
+    <div class="filter__panel-btn">
+        Фильтры
+        <div class="btn_toggle">
+            <span></span>
+        </div>
+    </div>
     <form action="{{ request()->fullUrl() }}" class="filter__panel-form" method="get">
         <input type="hidden" name="name" value="{{ request('name') ?: '' }}">
         <input type="hidden" name="price" value="{{ request('price') ?: '' }}">
