@@ -63,7 +63,7 @@ class LinkGeneratorService
     {
         $route = route($modelName . '.show', ['alias' => $alias], false);
 
-        return str_replace('index', '', $route);
+        return str_replace('index', '', urldecode($route));
     }
 
 }
