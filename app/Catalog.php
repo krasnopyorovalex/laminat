@@ -48,8 +48,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Catalog extends Model
 {
-    use AutoAliasTrait;
-
     /**
      * @var array
      */

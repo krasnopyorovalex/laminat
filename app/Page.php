@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 /**
  * App\Page
@@ -45,13 +47,11 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Page extends Model
 {
-    use AutoAliasTrait;
-
-    private $templates = [
+    private const TEMPLATES = [
         'page.page' => 'Информационная',
         'page.index' => 'Главная',
         'page.blog' => 'Блог',
-        'page.guestbook' => 'Отызвы',
+        //'page.guestbook' => 'Отызвы',
         'page.contacts' => 'Контакты',
     ];
 
@@ -61,27 +61,27 @@ class Page extends Model
     protected $fillable = ['slider_id', 'gallery_id', 'template', 'name', 'title', 'description', 'text', 'alias', 'is_published'];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
+     * @return MorphOne
      */
-    public function image()
+    public function image(): MorphOne
     {
-        return $this->morphOne('App\Image', 'imageable');
+        return $this->morphOne(Image::class, 'imageable');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
-    public function slider()
+    public function slider(): BelongsTo
     {
-        return $this->belongsTo('App\Slider');
+        return $this->belongsTo(Slider::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
-    public function gallery()
+    public function gallery(): BelongsTo
     {
-        return $this->belongsTo('App\Gallery');
+        return $this->belongsTo(Gallery::class);
     }
 
     /**
@@ -89,7 +89,7 @@ class Page extends Model
      */
     public function getUrlAttribute(): string
     {
-        return route("page.show", $this->alias);
+        return route('page.show', $this->alias);
     }
 
     /**
@@ -97,6 +97,6 @@ class Page extends Model
      */
     public function getTemplates(): array
     {
-        return $this->templates;
+        return self::TEMPLATES;
     }
 }

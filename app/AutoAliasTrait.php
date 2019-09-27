@@ -10,6 +10,6 @@ trait AutoAliasTrait
      */
     public function setAliasAttribute(string $value): void
     {
-        $this->attributes['alias'] = str_slug($value);
+        $this->attributes['alias'] = str_slug($value, '-', 'ru');
     }
 }
