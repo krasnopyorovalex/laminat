@@ -105,7 +105,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-2">
-                        @includeWhen($menu->get('menu_footer'), 'layouts.menus.footer', ['menu' => $menu])
+                        @includeWhen($menu->get('menu_header'), 'layouts.menus.footer', ['menu' => $menu])
                     </div>
                     <div class="col-2">
                         <ul>
