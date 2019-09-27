@@ -23,7 +23,7 @@ Route::group(['middleware' => ['redirector', 'shortcode']], static function () {
     Route::get('{alias}', 'CatalogController@show')->name('catalog.show');
     Route::get('/{alias?}/{page?}', 'PageController@show')->name('page.show')->where('page', '[0-9]+');
     Route::get('блог/{alias}', 'BlogController@show')->name('article.show');
-    Route::get('продукт/{alias}', 'CatalogProductController@show')->name('catalog_product.show');
+    Route::get('товар/{alias}', 'CatalogProductController@show')->name('catalog_product.show');
 });
 
 Route::group(['prefix' => '_root', 'middleware' => 'auth', 'namespace' => 'Admin', 'as' => 'admin.'], static function () {
