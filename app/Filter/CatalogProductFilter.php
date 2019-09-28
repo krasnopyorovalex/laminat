@@ -45,6 +45,14 @@ final class CatalogProductFilter extends Filter
                 ->whereIn('cpf_'.$uniqueTablePostfix.'.filter_option_id', (array)$filterOptions);
         }
 
+        //TODO alternative solution for search products by filter options
+        /*$query = DB::table('catalog_product_filter')
+            ->select('catalog_product_id')
+            //->where('filter_id', 'filters_ids')
+            ->whereIn('filter_option_id', [1,2,4,5])
+            ->groupBy('catalog_product_id')
+            ->havingRaw('COUNT(`catalog_product_id`) = ' . count($filters));*/
+
         $catalogProductIds = $query->get()->pluck('catalog_product_id')->toArray();
 
         return $this->builder->whereIn('id', $catalogProductIds);

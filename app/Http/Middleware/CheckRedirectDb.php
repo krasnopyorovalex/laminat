@@ -6,6 +6,7 @@ use App\Domain\Redirect\Queries\GetRedirectByUriQuery;
 use App\Redirect;
 use Closure;
 use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Http\Request;
 
 /**
  * Class CheckRedirectDb
@@ -18,8 +19,8 @@ class CheckRedirectDb
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Closure  $next
+     * @param  Request $request
+     * @param  Closure  $next
      * @return mixed
      */
     public function handle($request, Closure $next)
@@ -27,18 +28,18 @@ class CheckRedirectDb
         /**
          * @var $existedInDb Redirect
          */
-        $existedInDb = $this->dispatch(new GetRedirectByUriQuery($request->getRequestUri()));
+        $existedInDb = $this->dispatch(new GetRedirectByUriQuery(urldecode($request->getRequestUri())));
 
         if ($existedInDb) {
            return redirect($existedInDb->url_new, 301);
         }
 
-        if ((strpos($request->getPathInfo(), '//') !== false) || (substr($request->getPathInfo(), -1) == '/' && $request->getPathInfo() != '/')) {
+        if ((strpos($request->getPathInfo(), '//') !== false) || (substr($request->getPathInfo(), -1) === '/' && $request->getPathInfo() !== '/')) {
 
-            $actualUrl = preg_replace("/\/+/","/", $request->getPathInfo());
+            $actualUrl = preg_replace("/\/+/", '/', $request->getPathInfo());
 
-            if( substr($actualUrl, -1) == '/' ){
-                while( substr($actualUrl, -1) == '/' ){
+            if( substr($actualUrl, -1) === '/' ){
+                while( substr($actualUrl, -1) === '/' ){
                     $actualUrl = substr($actualUrl, 0, -1);
                 }
             }
