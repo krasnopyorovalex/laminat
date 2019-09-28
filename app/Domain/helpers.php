@@ -109,10 +109,14 @@ if (! function_exists('add_css_class')) {
     function add_css_class($item)
     {
         $classes = [];
+
         if (count($item->menuItems)) {
             $classes[] = 'has__child';
         }
-        if (trim($item->link,'/') === request()->path() || request()->path() === $item->link) {
+
+        $path = urldecode(request()->path());
+
+        if (trim($item->link,'/') === $path || $path === $item->link) {
             $classes[] = 'active';
         }
         return count($classes) ? ' class="'. implode(' ', $classes) .'"' : '';
