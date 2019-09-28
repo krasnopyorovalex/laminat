@@ -104,16 +104,6 @@
         <div class="@isset($map)contacts_map @endisset">
             <div class="container">
                 <div class="row">
-                    <div class="col-2">
-                        @includeWhen($menu->get('menu_header'), 'layouts.menus.footer', ['menu' => $menu])
-                    </div>
-                    <div class="col-2">
-                        <ul>
-                            <li><a href="{{ route('page.show',['alias' => 'blog']) }}">Блог</a></li>
-                            <li><a href="{{ route('page.show', ['alias' => 'kontakti']) }}">Контакты</a></li>
-                            <li><a href="{{ route('page.show',['alias' => 'sitemap']) }}">Карта сайта</a></li>
-                        </ul>
-                    </div>
                     <div class="col-4">
                         <div class="contact">
                             {{ svg('map') }}
@@ -128,7 +118,10 @@
                             <a href="tel:+79787971006" title="Позвонить">+7 (978) 797-10-06</a>
                         </div>
                     </div>
-                    <div class="col-4 right flex">
+                    <div class="col-5">
+                        @includeWhen($menu->get('menu_footer'), 'layouts.menus.footer', ['menu' => $menu])
+                    </div>
+                    <div class="col-3">
                         <div class="develop">
                             <div class="develop__link">
                                 <a href="/" target="_blank" rel="nofollow">
