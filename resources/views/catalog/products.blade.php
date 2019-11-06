@@ -28,7 +28,26 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    @include('layouts.partials.breadcrumbs', ['page' => $catalog, 'parent' => $catalog->parent])
+                    <ul class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+                        <li itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                            <a href="{{ route('page.show') }}">Главная</a>
+                            <meta itemprop="position" content="1">
+                        </li>
+                        @if($catalog->parent->parent)
+                            <li itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a href="{{ route('page.show', ['alias' => $catalog->parent->parent->alias]) }}">{{ $catalog->parent->parent->name }}</a>
+                                <meta itemprop="position" content="2">
+                            </li>
+                        @endif
+                        <li itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                            <a href="{{ route('page.show', ['alias' => $catalog->parent->alias]) }}">{{ $catalog->parent->name }}</a>
+                            <meta itemprop="position" content="{{ $catalog->parent->parent ? 3 : 2 }}">
+                        </li>
+                        <li itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                            {{ $catalog->name }}
+                            <meta itemprop="position" content="{{ $catalog->parent->parent ? 4 : 3 }}">
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="row">

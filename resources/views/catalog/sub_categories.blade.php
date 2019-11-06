@@ -28,7 +28,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    @include('layouts.partials.breadcrumbs', ['page' => $catalog])
+                    @include('layouts.partials.breadcrumbs', ['page' => $catalog, 'parent' => $catalog->parent])
                     <div class="seo__text">
                         {!! $catalog->text !!}
                     </div>

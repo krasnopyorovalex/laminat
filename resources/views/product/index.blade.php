@@ -28,39 +28,40 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <ul class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
-                        <li itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                    <ul class="breadcrumbs">
+                        <li>
                             <a href="{{ route('page.show') }}">Главная</a>
-                            <meta itemprop="position" content="1">
                         </li>
+                        @isset($product->catalog->parent->parent)
+                            <li>
+                                <a href="{{ route('page.show', ['alias' => $product->catalog->parent->parent->alias]) }}">{{ $product->catalog->parent->parent->name }}</a>
+                            </li>
+                        @endisset
                         @isset($product->catalog->parent)
-                            <li itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                            <li>
                                 <a href="{{ route('page.show', ['alias' => $product->catalog->parent->alias]) }}">{{ $product->catalog->parent->name }}</a>
-                                <meta itemprop="position" content="2">
                             </li>
                         @endisset
                         @isset($product->catalog)
-                            <li itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                            <li>
                                 <a href="{{ route('page.show', ['alias' => $product->catalog->alias]) }}">{{ $product->catalog->name }}</a>
-                                <meta itemprop="position" content="{{ isset($product->catalog->parent) ? 3 : 2 }}">
                             </li>
                         @endisset
-                        <li itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                        <li>
                             {{ $product->name }}
-                            <meta itemprop="position" content="{{ isset($product->catalog->parent) ? 4 : 3 }}">
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="row">
-                <div class="col-6">
+                <div class="col-5">
                     @if($product->image)
                     <figure class="product_image">
                         <img src="{{ $product->image->path }}" alt="{{ $product->image->alt }}" title="{{ $product->image->title }}">
                     </figure>
                     @endif
                 </div>
-                <div class="col-6">
+                <div class="col-7">
                     <div class="product__text">
                         <div class="row">
                             <div class="col-4 as_center">
