@@ -68,7 +68,7 @@
                                 <div class="product_price"><span>Цена</span>: {{ $product->getPrice() }}</div>
                             </div>
                             <div class="col-8">
-                                @if($product->filterOptions)
+                                @if(count($product->filterOptions))
                                     <table class="product_filters">
                                         <thead>
                                             <tr>
