@@ -44,20 +44,20 @@
 
     @includeWhen($page->gallery, 'layouts.sections.gallery', ['gallery' => $page->gallery])
 
-    <main class="seo">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h1 class="title">{{ $page->name }}</h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="seo__text">
-                        {!! $page->text !!}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+{{--    <main class="seo">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-12">--}}
+{{--                    <h1 class="title">{{ $page->name }}</h1>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-12">--}}
+{{--                    <div class="seo__text">--}}
+{{--                        {!! $page->text !!}--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </main>--}}
 @endsection
