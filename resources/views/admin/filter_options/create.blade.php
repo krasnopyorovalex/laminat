@@ -27,6 +27,7 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="main">
                             @input(['name' => 'name', 'label' => 'Название'])
+                            @input(['name' => 'pos', 'label' => 'Позиция'])
                             @submit_btn()
                         </div>
                     </div>

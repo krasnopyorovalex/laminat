@@ -14,7 +14,8 @@ class CreateFilterOptionRequest extends Request
     {
         return [
             'name' => 'bail|required|max:255',
-            'filter_id' => 'required|numeric|exists:filters,id'
+            'filter_id' => 'required|numeric|exists:filters,id',
+            'pos' => 'integer'
         ];
     }
 

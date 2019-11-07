@@ -38,7 +38,7 @@ class Filter extends Model
      */
     public function filterOptions(): HasMany
     {
-        return $this->hasMany(FilterOption::class);
+        return $this->hasMany(FilterOption::class)->orderBy('pos');
     }
 
     /**

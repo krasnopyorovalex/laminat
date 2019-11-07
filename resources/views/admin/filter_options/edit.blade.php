@@ -26,6 +26,7 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="main">
                                 @input(['name' => 'name', 'label' => 'Название', 'entity' => $filterOption])
+                                @input(['name' => 'pos', 'label' => 'Позиция', 'entity' => $filterOption])
                                 @submit_btn()
                         </div>
                     </div>

@@ -986,6 +986,7 @@ class ParseTarkettCommand extends Command
 
     /**
      * @param array $meta
+     * @throws \Exception
      */
     private function parseCollection(array $meta): void
     {

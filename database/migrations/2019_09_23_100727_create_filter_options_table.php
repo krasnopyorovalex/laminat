@@ -17,6 +17,7 @@ class CreateFilterOptionsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('filter_id');
             $table->string('name');
+            $table->unsignedSmallInteger('pos')->default(0);
 
             $table->foreign('filter_id')->references('id')->on('filters')->onDelete('cascade');
         });

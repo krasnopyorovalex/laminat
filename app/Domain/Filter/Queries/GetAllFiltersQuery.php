@@ -3,6 +3,7 @@
 namespace App\Domain\Filter\Queries;
 
 use App\Filter;
+use Illuminate\Support\Collection;
 
 /**
  * Class GetAllFiltersQuery
@@ -11,9 +12,9 @@ use App\Filter;
 class GetAllFiltersQuery
 {
     /**
-     * Execute the job.
+     * @return Collection
      */
-    public function handle()
+    public function handle(): Collection
     {
         return Filter::orderBy('pos')->get();
     }
