@@ -11,7 +11,7 @@
 |
 */
 
-Route::pattern('alias', '[\dа-яa-z-&]+');
+Route::pattern('alias', '[\dа-яa-z-&A-Z]+');
 
 Auth::routes();
 
