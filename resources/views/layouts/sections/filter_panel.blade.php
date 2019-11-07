@@ -14,11 +14,11 @@
             <div class="single__block-price">
                 <div>
                     <label for="input__price-from">от:</label>
-                    <input type="text" id="input__price-from" name="priceFrom" value="{{ request('priceFrom') ?: '100'  }}" data-value="100">
+                    <input type="text" id="input__price-from" name="priceFrom" value="{{ request('priceFrom') ?: 0  }}" data-value="0">
                 </div>
                 <div>
                     <label for="input__price-to">до:</label>
-                    <input type="text" id="input__price-to" name="priceTo" value="{{ request('priceTo') ?: '10000'  }}" data-value="10000">
+                    <input type="text" id="input__price-to" name="priceTo" value="{{ request('priceTo') ?: 10000  }}" data-value="10000">
                 </div>
             </div>
         </div>
