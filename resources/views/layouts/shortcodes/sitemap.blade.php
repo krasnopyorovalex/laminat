@@ -12,25 +12,25 @@
                         @endforeach
                     </ul>
                 @endif
-                @if ($page->alias === 'catalog' && count($catalog))
-                    <ul>
-                        @foreach($catalog as $cat)
-                            <li>
-                                <a href="{{ $cat->url }}">{{ $cat->name }}</a>
-                                @if (count($cat->products))
-                                   <ul>
-                                       @foreach($cat->products as $product)
-                                           <li>
-                                               <a href="{{ $product->url }}">{{ $product->name }}</a>
-                                           </li>
-                                       @endforeach
-                                   </ul>
-                                @endif
-                            </li>
-                        @endforeach
-                    </ul>
-                @endif
             </li>
         @endforeach
+    @endif
+    @if (count($catalog))
+        <ul>
+            @foreach($catalog as $cat)
+                <li>
+                    <a href="{{ $cat->url }}">{{ $cat->name }}</a>
+                    @if (count($cat->products))
+                        <ul>
+                            @foreach($cat->products as $product)
+                                <li>
+                                    <a href="{{ $product->url }}">{{ $product->name }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </li>
+            @endforeach
+        </ul>
     @endif
 </ul>
