@@ -110,7 +110,7 @@
                     <ul class="breadcrumb">
                         <li><a href="{{ route('admin.home') }}"><i class="icon-home2 position-left"></i> Главная</a></li>
                         @section('breadcrumb')
-                            <li class="active">Пропишите хлебные крошки</li>
+                            <li class="active">Главная страница</li>
                         @show
                     </ul>
                 </div>

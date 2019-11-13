@@ -16,7 +16,9 @@ class GetAllCatalogsNotParentQuery
     public function handle()
     {
         return Catalog::where('parent_id')->with(['catalogs' => static function($query){
-            return $query->with(['catalogs']);
+            return $query->with(['catalogs' => static function ($query) {
+                return $query->with(['catalogs']);
+            }]);
         }])->orderBy('pos')->get();
     }
 }
