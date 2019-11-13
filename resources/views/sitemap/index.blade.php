@@ -10,26 +10,6 @@
         </url>
         @endforeach
     @endif
-    @if (count($services))
-        @foreach($services as $service)
-            <url>
-                <loc>{{ route('service.show', ['alias' => $service->alias]) }}</loc>
-                <lastmod>{{ Illuminate\Support\Carbon::now()->format("Y-m-d\\TH:i:sP") }}</lastmod>
-                <changefreq>daily</changefreq>
-                <priority>0.9</priority>
-            </url>
-                @if (count($service->services))
-                    @foreach($service->services as $subService)
-                        <url>
-                            <loc>{{ route('service.show', ['alias' => $subService->alias]) }}</loc>
-                            <lastmod>{{ Illuminate\Support\Carbon::now()->format("Y-m-d\\TH:i:sP") }}</lastmod>
-                            <changefreq>daily</changefreq>
-                            <priority>0.9</priority>
-                        </url>
-                    @endforeach
-                @endif
-        @endforeach
-    @endif
     @if (count($articles))
         @foreach($articles as $article)
             <url>
@@ -40,4 +20,24 @@
             </url>
         @endforeach
     @endif
+        @if (count($catalog))
+                @foreach($catalog as $cat)
+                <url>
+                    <loc>{{ $cat->url }}</loc>
+                    <lastmod>{{ Illuminate\Support\Carbon::parse($cat->updated_at)->format("Y-m-d\\TH:i:sP") }}</lastmod>
+                    <changefreq>daily</changefreq>
+                    <priority>0.8</priority>
+                </url>
+                    @if (count($cat->products))
+                        @foreach($cat->products as $product)
+                        <url>
+                            <loc>{{ $product->url }}</loc>
+                            <lastmod>{{ Illuminate\Support\Carbon::parse($product->updated_at)->format("Y-m-d\\TH:i:sP") }}</lastmod>
+                            <changefreq>daily</changefreq>
+                            <priority>0.8</priority>
+                        </url>
+                        @endforeach
+                    @endif
+                @endforeach
+        @endif
 </urlset>
