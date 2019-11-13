@@ -83,7 +83,7 @@
                             <li><a href="{{ route('admin.sliders.index') }}"><i class="icon-images2"></i> <span>Слайдер</span></a></li>
                             <li><a href="{{ route('admin.galleries.index') }}"><i class="icon-stack-picture"></i> <span>Галерея</span></a></li>
                             <li><a href="{{ route('admin.menus.index') }}"><i class="icon-lan2"></i> <span>Навигация</span></a></li>
-                            <li><a href="{{ route('admin.redirects.index') }}"><i class="icon-transmission"></i> <span>Редиректы</span></a></li>
+{{--                            <li><a href="{{ route('admin.redirects.index') }}"><i class="icon-transmission"></i> <span>Редиректы</span></a></li>--}}
                             <!-- /main -->
 
                         </ul>
@@ -91,9 +91,9 @@
                 </div>
                 <!-- /main navigation -->
 
-                <div class="info_btn">
-                    <button type="button" data-toggle="modal" data-target="#modal_info-bar" class="btn btn-primary btn-labeled btn-xlg"><b><i class="icon-info3"></i></b> Информация</button>
-                </div>
+{{--                <div class="info_btn">--}}
+{{--                    <button type="button" data-toggle="modal" data-target="#modal_info-bar" class="btn btn-primary btn-labeled btn-xlg"><b><i class="icon-info3"></i></b> Информация</button>--}}
+{{--                </div>--}}
 
             </div>
         </div>
