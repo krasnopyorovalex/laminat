@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="title">
-                    Какие покрытие Вы ищете?
+                    Какое покрытие Вы ищете?
                 </div>
                 <div class="sub__title">
                     Наши услуги
