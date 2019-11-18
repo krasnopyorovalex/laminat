@@ -97,5 +97,5 @@
             </div>
         </div>
     </main>
-    @include('layouts.forms.order_popup')
+    @include('layouts.forms.order_popup', ['product' => $product])
 @endsection

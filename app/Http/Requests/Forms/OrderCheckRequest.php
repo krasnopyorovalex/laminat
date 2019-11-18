@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Forms;
 
 use App\Http\Requests\Request;
+use App\Rules\CatalogProductRule;
 
 /**
  * Class OrderCheckRequest
@@ -14,7 +15,8 @@ class OrderCheckRequest extends Request
     {
         return [
             'name' => 'required|string|min:3',
-            'phone' => 'required|string|min:5'
+            'phone' => 'required|string|min:5',
+            'product' => ['required', 'string', new CatalogProductRule],
         ];
     }
 }

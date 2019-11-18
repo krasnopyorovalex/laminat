@@ -27,8 +27,8 @@ class ExistsCatalogProductByNameQuery
     /**
      * Execute the job.
      */
-    public function handle()
+    public function handle(): bool
     {
-        return CatalogProduct::where('name', $this->name)->firstOrFail();
+        return CatalogProduct::where('name', $this->name)->exists();
     }
 }

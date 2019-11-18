@@ -1,5 +1,6 @@
 <form action="{{ route('order.check.send') }}" class="form__order" id="check__order-recall" method="post">
     @csrf
+    <input type="hidden" name="product" value="{{ isset($product) ? $product->name : '' }}">
     <div class="close__box" title="Закрыть форму">
         <div class="close"></div>
     </div>
@@ -19,7 +20,7 @@
     <div class="single__block i__agree">
         <label for="agree__recall">
             <input type="checkbox" name="agree__recall" id="agree__recall" checked="checked">
-            Согласие на <a href="{{ route('page.show', ['alias' => 'personalnye-dannye']) }}" target="_blank">обработку персональных данных</a>
+            Согласие на обработку персональных данных
         </label>
         <p class="error">Согласитесь на обработку персональных данных</p>
     </div>
